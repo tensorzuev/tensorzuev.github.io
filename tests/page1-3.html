@@ -40,7 +40,11 @@
         }
       });
       
-      document.getElementById('result').innerText = JSON.stringify(result);
+      var reportString = 'count = ' + result.length + ' last 5: ';
+      for (var k=result.length-6; k<result.length; k++) {
+        reportString += ' ' + result[k]
+      }
+      document.getElementById('result').innerText = reportString;
       
     </script>
     <p>Page contains several paragraphs and text with changed color.</p>
