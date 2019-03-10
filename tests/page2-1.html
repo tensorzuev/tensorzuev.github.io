@@ -17,25 +17,18 @@
     <div id="result"></div>
     <script>
       function fillArray(arr){
-        for (var i=0; i<5000; i++) {
+        for (var i=0; i<50000; i++) {
           arr.push(i);
         }
-      }
-
-      function getTransformation(el) {
-        return [el, el, el, el, el, el, el, el, el, el];
       }
 
       var array = [];
       fillArray(array);
       var result = array.reduce(function(prev, next){
-        return prev.concat(getTransformation(next));
-      }, []);
+        return prev + next;
+      }, 0);
 
-      var reportString = 'count = ' + result.length + ' last 5: ';
-      for (var k=result.length-6; k<result.length; k++) {
-        reportString += ' ' + result[k]
-      }
+      var reportString = 'sum = ' + result;
       document.getElementById('result').innerText = reportString;
 
     </script>
