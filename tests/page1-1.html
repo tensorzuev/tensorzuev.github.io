@@ -17,13 +17,13 @@
     <div id="result"></div>
     <script> 
       function fillArray(arr){
-        for (var i=0; i<100000; i++) {
+        for (var i=0; i<50000; i++) {
           arr.push(i);
         }
       }
       
       function getTransformation(el) {
-        return el>10000?[el]:[el, el];
+        return el>5000?[el]:[el, el];
       }
       
       var array = [];
@@ -32,7 +32,11 @@
         return prev.concat(getTransformation(next));
       }, []);
       
-      document.getElementById('result').innerText = JSON.stringify(result);
+      var reportString = 'count = ' + result.length + ' last 5: ';
+      for (var k=result.length-6; k<result.length; k++) {
+        reportString += ' ' + result[k]
+      }
+      document.getElementById('result').innerText = reportString;
       
     </script>
     <p>Page contains several paragraphs and text with changed color.</p>
