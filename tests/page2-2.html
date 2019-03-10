@@ -1,0 +1,51 @@
+<!DOCTYPE HTML />
+<html>
+  <head>
+    <style>
+      .colored {
+        color: #ff0000;
+        backgorund: #0000ff;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>SIMPLE PAGE</h1>
+    <p>Page contains several paragraphs and text with changed color.</p>
+    <div class="colored">
+      This text is red
+    </div>
+    <div id="result"></div>
+    <script>
+      function fillArray(arr){
+        for (var i=0; i<5000; i++) {
+          arr.push(i);
+        }
+      }
+
+      function getTransformation(el) {
+        return [el, el, el, el, el, el, el, el, el, el];
+      }
+
+      var array = [];
+      fillArray(array);
+      var result = [];
+      array.forEach(function(next) {
+        var transformed = getTransformation(next);
+        transformed.forEach(function(el) {
+          result.push(el);
+        });
+      });
+
+      var reportString = 'count = ' + result.length + ' last 5: ';
+      for (var k=result.length-6; k<result.length; k++) {
+        reportString += ' ' + result[k]
+      }
+      document.getElementById('result').innerText = reportString;
+
+    </script>
+    <p>Page contains several paragraphs and text with changed color.</p>
+    <div class="colored">
+      This text is red
+    </div>
+  </body>
+</html>
