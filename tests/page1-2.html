@@ -17,13 +17,13 @@
     <div id="result"></div>
     <script> 
       function fillArray(arr){
-        for (var i=0; i<1000; i++) {
+        for (var i=0; i<100000; i++) {
           arr.push(i);
         }
       }
       
       function getTransformation(el) {
-        return el>100?[el]:[el, el];
+        return el>10000?[el]:[el, el];
       }
       
       var array = [];
