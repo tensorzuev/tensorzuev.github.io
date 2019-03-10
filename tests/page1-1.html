@@ -1,0 +1,43 @@
+<!DOCTYPE HTML />
+<html>
+  <head>
+    <style>
+      .colored {
+        color: #ff0000;
+        backgorund: #0000ff;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>SIMPLE PAGE</h1>
+    <p>Page contains several paragraphs and text with changed color.</p>
+    <div class="colored">
+      This text is red  
+    </div>
+    <div id="result"></div>
+    <script> 
+      function fillArray(arr){
+        for (var i=0; i<1000; i++) {
+          arr.push(i);
+        }
+      }
+      
+      function getTransformation(el) {
+        return el>100?[el]:[el, el];
+      }
+      
+      var array = [];
+      fillArray(array);
+      var result = array.reduce(function(prev, next){
+        return prev.concat(getTransformation(next));
+      }, []);
+      
+      document.getElementById('result').innerText = JSON.stringify(array);
+      
+    </script>
+    <p>Page contains several paragraphs and text with changed color.</p>
+    <div class="colored">
+      This text is red  
+    </div>
+  </body>
+</html>
