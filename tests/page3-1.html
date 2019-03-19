@@ -17,31 +17,22 @@
     <div id="result"></div>
     <script>
       function fillArray(arr){
-        for (var i=0; i<500; i++) {
-          arr.push(i);
+        arr.splice(0);
+        for (var i=0; i<5000; i++) {
+          arr.push(i+'test'+(i%2?i:i-1));
         }
       }
-
+          
       var array = [];
-      var i = 0;
       fillArray(array);
 
-      function doIt(j) {
-        return new Promise((resolve) => {
-          resolve(array[j]);
-        });
-      }
-      
-      var sum = 0;
-      function goNext() {
-        if (i === array.length) {
-          document.getElementById('result').innerText = sum;
-        } else {
-          doIt().then((el)=>{ sum+=el; i++; goNext();})
-        }
-      }      
-      
-      goNext();
+      var i = 0;
+      var str = array.filter((el)=>{
+        var reg = new RegExp('^'+i+'te+.+'+i+'$');
+        i++;
+        return reg.test(el);
+      }).join(',');
+      document.getElementById('result').innerText = str;
     </script>
     <p>Page contains several paragraphs and text with changed color.</p>
     <div class="colored">
