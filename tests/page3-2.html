@@ -1,0 +1,52 @@
+<!DOCTYPE HTML />
+<html>
+  <head>
+    <style>
+      .colored {
+        color: #ff0000;
+        backgorund: #0000ff;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>SIMPLE PAGE</h1>
+    <p>Page contains several paragraphs and text with changed color.</p>
+    <div class="colored">
+      This text is red
+    </div>
+    <div id="result"></div>
+    <script>
+      function fillArray(arr){
+        for (var i=0; i<500; i++) {
+          arr.push(i);
+        }
+      }
+
+      var array = [];
+      var i = 0;
+      var sum = 0;
+      fillArray(array);
+
+      function doIt(j) {
+        if (array[j] % 2 == 0) { return array[j]; }
+        return new Promise((resolve) => {
+          resolve(array[j]);
+        });
+      }
+      function sum(el) { sum+=el; i++; goNext(); }
+      
+      function goNext() {
+        if (i === array.length) {
+          document.getElementById('result').innerText = sum;
+        } else {
+          var res = doIt();
+          if (res.then) { res.then(sum); } else { sum(res); }
+        }
+      }
+    </script>
+    <p>Page contains several paragraphs and text with changed color.</p>
+    <div class="colored">
+      This text is red
+    </div>
+  </body>
+</html>
