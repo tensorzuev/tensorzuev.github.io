@@ -15,5 +15,8 @@ $(document).ready(function(){
         window.parent.postMessage('resize-' + height + '-' + dumpH, '*');
       }
     }, 1000)
+    $('a').on('click', function(ev){
+       ev.target.href+=location.hash
+    })
   }
 })
