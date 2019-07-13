@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <script>
+      setTimeout(function() {
+        var iframe = location.hash.split('&').find(function(part) {
+          if (part && part.indexOf('iframeid=') > -1) {
+            return true
+          }
+        })
+        if (iframe) {
+          var idIframe = iframe.split('=')[1];
+          var dumpH = document.body.offsetHeight
+          window.parent.postMessage('resize-' + idIframe + '-' + dumpH, '*');
+          setInterval(function(){
+            if (dumpH !== document.body.offsetHeight) {
+              dumpH = document.body.offsetHeight
+              window.parent.postMessage('resize-' + idIframe + '-' + dumpH, '*');
+            }
+          }, 1000)
+        }
+      }, 1000)
+    </script>
+  </body>
+</html>
